@@ -1,0 +1,91 @@
+module org{
+    module ds{
+        module rps{
+             module interfaces{   
+                
+                //RPS values
+                enum RPS { unselected, rock, paper, scissor };
+
+                //Callback
+                interface CallBack {
+                    void message(in string msg);
+                };
+                
+                //Player Model
+                struct Player{
+                    string id;
+                    string name;
+                    long score;
+                    RPS choice;  
+                    boolean isReady;
+                    CallBack  callback;
+                };     
+                
+                //Array of players
+                typedef sequence<Player> PlayerList;
+
+                //Game Model
+                struct Game{
+                    string id;
+                    string date;
+                    string winner_id;
+                    string winner_name;
+                    string message; 
+                    boolean isActive; 
+                    PlayerList players;                     
+                };
+
+                //Array of games
+                typedef sequence<Game> GameList;
+                
+                //ScoreBoard Model
+                struct ScoreBoard{
+                    PlayerList players; 
+                    GameList games;                   
+                };
+                
+                //Binary Array
+                typedef sequence<octet> Data;
+
+                //Custom exceptions
+                exception unknown_player {};  
+                exception unknown_game {};                
+                exception unknown_path {};
+                exception create_fail {}; 
+                exception destroy_fail {}; 
+
+                interface GameInterface {      
+                 
+                    //Player methods
+                    string  subscribe(in string player_name, in CallBack callback)raises(create_fail);
+                    boolean unsubscribe(in string player_id) raises(unknown_player,destroy_fail);   
+                    string getPlayerNameById(in string player_id)raises(unknown_player);
+                                                
+                    //Game methods
+                    boolean hasOpenSlot(); 
+                    boolean isValidPlayer(in string player_id) raises(unknown_player); 
+                    boolean setPlayerIsReady(in string player_id, in boolean ready) raises(unknown_player);
+                    boolean checkIfPlayersAreReadyToStart();                    
+                    boolean setPlayerSelection(in string player_id, in long choice)raises(unknown_player);
+                    boolean checkIfPlayersHaveSelected();
+                    boolean calculateResults();
+                    boolean endCurrentGame();                    
+                    boolean hasAPlayerLeft();
+
+                    //Callback method
+                    void event_listener(in string player_id, in string message , in CallBack callback) raises(unknown_player); 
+                    
+                    //File transfer method
+                    Data getHowTooPlayFile(in string file_name) raises(unknown_path);
+                    
+                    //Any method
+                    void currGameDetails(in string player_id, out any anyGame)raises(unknown_player);
+
+                };    
+            };
+        };
+    };
+};
+
+
+

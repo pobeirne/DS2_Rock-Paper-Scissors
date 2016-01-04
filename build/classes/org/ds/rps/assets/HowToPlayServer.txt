@@ -1,0 +1,36 @@
+*******Welcome to "Paper, Rock & Scissors Game"*********
+
+Rock, Paper, Scissors is a game for two players. The two players each make  choice of:
+
+- rock
+- paper
+- pair of scissors
+
+The winner of that round depends on the items formed. If the same item is formed, it's a tie. If a rock and scissors are formed, the rock wins, because a rock can smash scissors. If scissors and paper are formed, the scissors win, because scissors can cut paper. If paper and a rock are formed, the paper wins, because a sheet of paper can cover a rock. After one round is completed, they can start another round. 
+
+*******HOME PAGE*********
+
+Consists of Two main buttons and Three other buttons which occur on each page;
+
+
+"How to play" - A description of how to play.
+
+"Start Game" - This is where you start your quiz, preceded by the signing in procedure. 
+
+"Back" - Use this button to go back to the previous page. 
+
+"Home" - Brings you to a page where the main content is displayed.
+
+"Cancel" - exit the game. 
+
+To start the quiz just click start. If you don’t want to use the app just use the 'exit' button or the 'reset' button if you make a mistake.
+
+*******RESULT PAGE********
+
+- This displays the first name and the surname of the person who undertook the test.
+
+- It also displays the result obtained.
+
+If you want to go through the test again: You should press the button called "Play again".
+
+Have fun and good luck!!!
